@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 
-export function createCeiling(scene) {
-  const textureLoader = new THREE.TextureLoader();
+export function createCeiling(scene, textureLoader) {
   const ceilingTexture = textureLoader.load('../public/img/white-texture.jpg');
 
   const ceilingGeometry = new THREE.PlaneGeometry(45, 50);

@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-
+import { showMenu, hideMenu } from './menu.js';
 
 const keysPressed = {
   ArrowUp: false,
@@ -12,10 +12,22 @@ const keysPressed = {
   d: false,
 };
 
+let showMenuOnUnlock = false;
+
 export function setupEventListeners(controls, camera, wallGroup) {
   document.addEventListener('keydown', (event) => {
     if (event.key in keysPressed) {
       keysPressed[event.key] = true;
+    }
+
+    if (event.key === 'Escape') {
+      showMenuOnUnlock = true;
+      controls.unlock();
+    }
+
+    if (event.key === 'Enter' || event.key === 'Return') {
+      hideMenu();
+      controls.lock();
     }
   });
 
@@ -50,8 +62,17 @@ export function setupEventListeners(controls, camera, wallGroup) {
     if (keysPressed.ArrowUp || keysPressed.w) controls.moveForward(moveSpeed);
     if (keysPressed.ArrowDown || keysPressed.s) controls.moveForward(-moveSpeed);
 
-    if (checkCollision()) camera.position.copy(lastPos);
+    if (checkCollision()) {
+      camera.position.copy(lastPos);
+    }
   }
 
   window.updateMovement = updateMovement;
+
+  document.addEventListener('pointerlockchange', () => {
+    if (!document.pointerLockElement && showMenuOnUnlock) {
+      showMenu();
+      showMenuOnUnlock = false;
+    }
+  });
 }

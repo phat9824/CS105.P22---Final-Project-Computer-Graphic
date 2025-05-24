@@ -1,9 +1,7 @@
 import * as THREE from 'three';
 
-export function setupFloor(scene) {
-  const textureLoader = new THREE.TextureLoader();
+export function setupFloor(scene, textureLoader) {
   const floorTexture = textureLoader.load('../public/img/floor.jpg');
-
   floorTexture.wrapS = THREE.RepeatWrapping;
   floorTexture.wrapT = THREE.RepeatWrapping;
   floorTexture.repeat.set(20, 20);

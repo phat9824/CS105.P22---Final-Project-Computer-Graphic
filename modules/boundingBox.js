@@ -1,6 +1,11 @@
 import * as THREE from 'three';
 
 export function createBoundingBoxes(objects) {
+  // Nếu không phải mảng, giả sử là Group, lấy children
+  if (!Array.isArray(objects)) {
+    objects = objects.children;
+  }
+
   for (let obj of objects) {
     obj.BoundingBox = new THREE.Box3().setFromObject(obj);
   }

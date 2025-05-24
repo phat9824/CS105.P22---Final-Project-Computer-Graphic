@@ -1,8 +1,6 @@
 import * as THREE from 'three';
 
-export function createPaintings(scene) {
-  const textureLoader = new THREE.TextureLoader();
-
+export function createPaintings(scene, textureLoader) {
   const data = [
     { url: '../public/artworks/0.jpg', pos: [-10, 5, -19.99], rotY: 0 },
     { url: '../public/artworks/1.jpg', pos: [10, 5, -19.99], rotY: 0 },

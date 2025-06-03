@@ -1,5 +1,5 @@
-import * as THREE from 'three';
-import { showMenu, hideMenu } from './menu.js';
+import * as THREE from "three";
+import { showMenu, hideMenu } from "./menu.js";
 
 const keysPressed = {
   ArrowUp: false,
@@ -15,23 +15,24 @@ const keysPressed = {
 let showMenuOnUnlock = false;
 
 export function setupEventListeners(controls, camera, wallGroup) {
-  document.addEventListener('keydown', (event) => {
+  document.addEventListener("keydown", (event) => {
     if (event.key in keysPressed) {
       keysPressed[event.key] = true;
     }
 
-    if (event.key === 'Escape') {
-      showMenuOnUnlock = true;
+    if (event.key === "Escape") {
+      showMenuOnUnlock = false; // Show menu immediately
+      showMenu();
       controls.unlock();
     }
 
-    if (event.key === 'Enter' || event.key === 'Return') {
+    if (event.key === "Enter" || event.key === "Return") {
       hideMenu();
       controls.lock();
     }
   });
 
-  document.addEventListener('keyup', (event) => {
+  document.addEventListener("keyup", (event) => {
     if (event.key in keysPressed) {
       keysPressed[event.key] = false;
     }
@@ -60,7 +61,8 @@ export function setupEventListeners(controls, camera, wallGroup) {
     if (keysPressed.ArrowRight || keysPressed.d) controls.moveRight(moveSpeed);
     if (keysPressed.ArrowLeft || keysPressed.a) controls.moveRight(-moveSpeed);
     if (keysPressed.ArrowUp || keysPressed.w) controls.moveForward(moveSpeed);
-    if (keysPressed.ArrowDown || keysPressed.s) controls.moveForward(-moveSpeed);
+    if (keysPressed.ArrowDown || keysPressed.s)
+      controls.moveForward(-moveSpeed);
 
     if (checkCollision()) {
       camera.position.copy(lastPos);
@@ -69,7 +71,7 @@ export function setupEventListeners(controls, camera, wallGroup) {
 
   window.updateMovement = updateMovement;
 
-  document.addEventListener('pointerlockchange', () => {
+  document.addEventListener("pointerlockchange", () => {
     if (!document.pointerLockElement && showMenuOnUnlock) {
       showMenu();
       showMenuOnUnlock = false;

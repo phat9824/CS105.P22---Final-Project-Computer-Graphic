@@ -9,8 +9,10 @@ import { createBoundingBoxes } from "./modules/boundingBox.js";
 import { setupRendering } from "./modules/rendering.js";
 import { setupEventListeners } from "./modules/eventListeners.js";
 import { setupPlayButton } from "./modules/menu.js";
+import { setupAudio } from "./modules/audio.js";
 
 let { camera, controls, renderer } = setupScene();
+setupAudio(camera);
 
 const textureLoader = new THREE.TextureLoader();
 

@@ -258,3 +258,22 @@ canvas {
   margin: 0;
   font-size: 1.2em;
 }
+
+#info-panel {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 200px;
+  background-color: rgba(35, 35, 190, 0.8);
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+#info-panel.collapsed #info-content {
+  max-height: 0;
+  overflow: hidden;
+}

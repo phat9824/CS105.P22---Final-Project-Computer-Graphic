@@ -8,25 +8,57 @@ import { createCeiling } from "./modules/ceiling.js";
 import { createBoundingBoxes } from "./modules/boundingBox.js";
 import { setupRendering } from "./modules/rendering.js";
 import { setupEventListeners } from "./modules/eventListeners.js";
+import { addObjectsToScene } from "./modules/sceneHelpers.js";
 import { setupPlayButton } from "./modules/menu.js";
-import { setupAudio } from "./modules/audio.js";
+import { setupAudio } from "./modules/audio.js";  // ensure audio.js exists
 
+// Optional: if you have these modules installed
+// import { clickHandling } from "./modules/clickHandling.js";
+// import { setupVR } from "./modules/VRSupport.js";
+
+import { loadStatueModel } from "./modules/statue.js";
+import { loadCeilingLampModel } from "./modules/ceilingLamp.js";
+
+// 1. Scene, camera, controls, renderer
 let { camera, controls, renderer } = setupScene();
+
+// 2. Audio listener attached to camera
 setupAudio(camera);
 
+// 3. Texture loader
 const textureLoader = new THREE.TextureLoader();
 
+// 4. Core geometry
 const walls = createWalls(scene, textureLoader);
 const floor = setupFloor(scene, textureLoader);
 const ceiling = createCeiling(scene, textureLoader);
 const paintings = createPaintings(scene, textureLoader);
 
-setupLighting(scene, paintings);
+// 5. Lighting
+const lighting = setupLighting(scene, paintings);
 
+// 6. Add primary objects to scene
+addObjectsToScene(scene, [...walls.children, floor, ceiling, ...paintings]);
+
+// 7. Bounding boxes for collision/interaction
 createBoundingBoxes(walls);
 createBoundingBoxes(paintings);
 
+// 8. Load extra models (ceiling lamp & statue)
+loadStatueModel(scene);
+loadCeilingLampModel(scene);
+
+// 9. UI & controls
 setupPlayButton(controls);
 setupEventListeners(controls, camera, walls);
 
+// // Optional interactions
+// if (typeof clickHandling === 'function') {
+//     clickHandling(renderer, camera, paintings);
+// }
+// if (typeof setupVR === 'function') {
+//     setupVR(renderer);
+// }
+
+// 10. Start render loop
 setupRendering(scene, camera, renderer, paintings, controls, walls);

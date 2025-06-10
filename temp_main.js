@@ -37,12 +37,14 @@ const paintings = createPaintings(scene, textureLoader);
 // 5. Lighting
 const lighting = setupLighting(scene, paintings);
 
-// 6. Add primary objects to scene
-addObjectsToScene(scene, [...walls.children, floor, ceiling, ...paintings]);
-
 // 7. Bounding boxes for collision/interaction
 createBoundingBoxes(walls);
 createBoundingBoxes(paintings);
+
+
+// 6. Add primary objects to scene
+addObjectsToScene(scene, paintings);
+
 
 // 8. Load extra models (ceiling lamp & statue)
 loadStatueModel(scene);

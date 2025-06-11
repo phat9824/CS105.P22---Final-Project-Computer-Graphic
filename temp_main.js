@@ -50,6 +50,7 @@ addObjectsToScene(scene, paintings);
 loadCeilingLampModel(scene);
 loadStatueModel(scene, renderer, camera, (statue) => {
     // 9. UI & controls
+    createBoundingBoxes(statue);
     setupPlayButton(controls);
     clickHandling(renderer, camera, paintings);
     setupEventListeners(controls, camera, walls);

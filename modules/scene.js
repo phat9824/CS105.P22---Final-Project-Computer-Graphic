@@ -1,5 +1,5 @@
-import * as THREE from 'three';
-import { PointerLockControls } from 'three-stdlib';
+import * as THREE from "three";
+import { PointerLockControls } from "three-stdlib";
 
 export const scene = new THREE.Scene();
 
@@ -13,7 +13,6 @@ export function setupScene() {
     1000
   );
   scene.add(camera);
-  camera.position.z = 15;
 
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -23,12 +22,12 @@ export function setupScene() {
   document.body.appendChild(renderer.domElement);
 
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
   controls = new PointerLockControls(camera, document.body);
   scene.add(controls.getObject());
 
-  window.addEventListener('resize', onWindowResize);
+  window.addEventListener("resize", onWindowResize);
 
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;

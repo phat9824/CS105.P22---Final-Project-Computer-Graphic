@@ -4,7 +4,7 @@ export function createPaintings(scene, textureLoader) {
   const data = [
     {
       url: "/artworks/0.jpg",
-      pos: [-10, 5, -19.99],
+      pos: [-10, 5, -29.99],
       rotY: 0,
       info: {
         title: "Starry Night",
@@ -15,7 +15,7 @@ export function createPaintings(scene, textureLoader) {
     },
     {
       url: "/artworks/1.jpg",
-      pos: [10, 5, -19.99],
+      pos: [10, 5, -29.99],
       rotY: 0,
       info: {
         title: "Mona Lisa",
@@ -26,7 +26,7 @@ export function createPaintings(scene, textureLoader) {
     },
     {
       url: "/artworks/3.jpg",
-      pos: [-19.99, 5, -10],
+      pos: [-29.99, 5, -10],
       rotY: Math.PI / 2,
       info: {
         title: "The Scream",
@@ -37,7 +37,7 @@ export function createPaintings(scene, textureLoader) {
     },
     {
       url: "/artworks/5.jpg",
-      pos: [19.99, 5, -10],
+      pos: [29.99, 5, -10],
       rotY: -Math.PI / 2,
       info: {
         title: "Girl with a Pearl Earring",
@@ -48,7 +48,7 @@ export function createPaintings(scene, textureLoader) {
     },
     {
       url: "/artworks/8.jpg",
-      pos: [-19.99, 5, 10],
+      pos: [-29.99, 5, 10],
       rotY: Math.PI / 2,
       info: {
         title: "The Persistence of Memory",
@@ -59,7 +59,7 @@ export function createPaintings(scene, textureLoader) {
     },
     {
       url: "/artworks/9.jpg",
-      pos: [19.99, 5, 10],
+      pos: [29.99, 5, 10],
       rotY: -Math.PI / 2,
       info: {
         title: "The Kiss",
@@ -70,7 +70,7 @@ export function createPaintings(scene, textureLoader) {
     },
     {
       url: "/artworks/6.jpg",
-      pos: [-10, 5, 19.99],
+      pos: [-10, 5, 29.99],
       rotY: Math.PI,
       info: {
         title: "The Night Watch",
@@ -81,7 +81,7 @@ export function createPaintings(scene, textureLoader) {
     },
     {
       url: "/artworks/7.jpg",
-      pos: [10, 5, 19.99],
+      pos: [10, 5, 29.99],
       rotY: Math.PI,
       info: {
         title: "Water Lilies",

@@ -1,8 +1,17 @@
 import * as THREE from "three";
 import { displayPaintingInfo, hidePaintingInfo } from "./paintingInfo";
 import { updateMovement } from "./movement";
+import { toggleGUI } from "./lighting";
 
-export function setupRendering(scene, camera, renderer, paintings, controls, wallGroup, statue) {
+export function setupRendering(
+  scene,
+  camera,
+  renderer,
+  paintings,
+  controls,
+  wallGroup,
+  statue
+) {
   const clock = new THREE.Clock();
 
   function render() {
@@ -20,20 +29,20 @@ export function setupRendering(scene, camera, renderer, paintings, controls, wal
         paintingToShow = painting; // set paintingToShow to this painting (painting will show)
       }
     });
-
     if (paintingToShow) {
       // if there is a painting to show
       displayPaintingInfo(paintingToShow.userData.info);
+      toggleGUI(false); // Hide GUI when showing painting info
     } else {
       hidePaintingInfo();
+      toggleGUI(true); // Show GUI when not showing painting info
     }
 
-    scene.traverse(obj => {
+    scene.traverse((obj) => {
       if (typeof obj.userData.animate === "function") {
         obj.userData.animate();
       }
     });
-
 
     renderer.render(scene, camera);
     requestAnimationFrame(render);

@@ -15,7 +15,7 @@ export const startExperience = (controls) => {
   // Reset camera position and orientation for a fresh gallery experience
   if (controls && controls.getObject) {
     const obj = controls.getObject();
-    obj.position.set(0, 0, 15);
+    obj.position.set(0, 5, 15); // Set to same height as initial camera position
     obj.rotation.set(0, 0, 0);
   }
   controls.lock();

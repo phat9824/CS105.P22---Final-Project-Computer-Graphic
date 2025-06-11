@@ -383,3 +383,25 @@ canvas {
 #audio_controls button:hover {
   background-color: rgba(52, 58, 125, 0.8);
 }
+
+.info-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+  z-index: 1000;
+}
+
+.info-panel h2 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.info-panel p {
+  margin: 10px 0;
+  font-size: 14px;
+}

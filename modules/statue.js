@@ -69,22 +69,13 @@ export const loadStatueModel = (scene, renderer, camera, onLoaded) => {
       };
 
       // Modify the animate function to include distance check
-      const animate = () => {
-        requestAnimationFrame(animate);
-
-        // Rotate the statue around the Y-axis
+      // 1) Xoá toàn bộ animate() + requestAnimationFrame + render ở đây
+      // 2) Đăng ký callback quay tượng cho main loop:
+      statue.userData.animate = () => {
         statue.rotation.y += 0.01;
-        checkDistance(); // Check distance in each frame
-
-        // Ensure renderer, scene, and camera are defined before rendering
-        if (renderer && scene && camera) {
-          renderer.render(scene, camera);
-        } else {
-          console.error("Renderer, scene, or camera is not defined.");
-        }
+        checkDistance();
       };
 
-      animate(); // Start the animation loop
     },
     undefined,
     (error) => {

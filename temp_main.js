@@ -37,6 +37,7 @@ const paintings = createPaintings(scene, textureLoader);
 
 // 5. Lighting
 const lighting = setupLighting(scene, paintings);
+
 // 6. Bounding boxes for collision/interaction
 createBoundingBoxes(walls);
 createBoundingBoxes(paintings);

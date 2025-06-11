@@ -6,9 +6,10 @@ export function createBoundingBoxes(objects) {
     objects = objects.children;
   }
 
-  for (let obj of objects) {
-    obj.BoundingBox = new THREE.Box3().setFromObject(obj);
-  }
+  objects.forEach((object) => { 
+    object.BoundingBox = new THREE.Box3();
+    object.BoundingBox.setFromObject(object);
+  });
 }
 
 

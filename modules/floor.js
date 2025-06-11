@@ -6,7 +6,7 @@ export function setupFloor(scene, textureLoader) {
   floorTexture.wrapT = THREE.RepeatWrapping;
   floorTexture.repeat.set(20, 20);
 
-  const planeGeometry = new THREE.PlaneGeometry(45, 45);
+  const planeGeometry = new THREE.PlaneGeometry(60, 60);
   const planeMaterial = new THREE.MeshBasicMaterial({
     map: floorTexture,
     side: THREE.DoubleSide,

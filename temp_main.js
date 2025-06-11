@@ -18,6 +18,7 @@ import { setupAudio } from "./modules/audio.js";  // ensure audio.js exists
 
 import { loadStatueModel } from "./modules/statue.js";
 import { loadCeilingLampModel } from "./modules/ceilingLamp.js";
+import { clickHandling } from "./modules/clickHandling.js";
 
 // 1. Scene, camera, controls, renderer
 let { camera, controls, renderer } = setupScene();
@@ -37,30 +38,31 @@ const paintings = createPaintings(scene, textureLoader);
 // 5. Lighting
 const lighting = setupLighting(scene, paintings);
 
-// 7. Bounding boxes for collision/interaction
+// 6. Bounding boxes for collision/interaction
 createBoundingBoxes(walls);
 createBoundingBoxes(paintings);
 
-
-// 6. Add primary objects to scene
+// 7. Add primary objects to scene
+// addObjectsToScene(scene, [...walls.children, floor, ceiling, ...paintings]);
 addObjectsToScene(scene, paintings);
 
-
 // 8. Load extra models (ceiling lamp & statue)
-loadStatueModel(scene);
 loadCeilingLampModel(scene);
+loadStatueModel(scene, renderer, camera, (statue) => {
+    // 9. UI & controls
+    setupPlayButton(controls);
+    clickHandling(renderer, camera, paintings);
+    setupEventListeners(controls, camera, walls);
 
-// 9. UI & controls
-setupPlayButton(controls);
-setupEventListeners(controls, camera, walls);
+    // 10. Start render loop
+    setupRendering(scene, camera, renderer, paintings, controls, walls, statue);
+});
 
-// // Optional interactions
-// if (typeof clickHandling === 'function') {
-//     clickHandling(renderer, camera, paintings);
-// }
-// if (typeof setupVR === 'function') {
-//     setupVR(renderer);
-// }
+// setupPlayButton(controls);
+// clickHandling(renderer, camera, paintings);
+// setupEventListeners(controls, camera, walls);
 
-// 10. Start render loop
-setupRendering(scene, camera, renderer, paintings, controls, walls);
+// // 10. Start render loop
+// setupRendering(scene, camera, renderer, paintings, controls, walls);
+
+

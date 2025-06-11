@@ -2,7 +2,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader";
 
-export const loadStatueModel = (scene, renderer, camera) => {
+export const loadStatueModel = (scene, renderer, camera, onLoaded) => {
     const loader = new GLTFLoader();
 
     loader.load(
@@ -11,7 +11,7 @@ export const loadStatueModel = (scene, renderer, camera) => {
             const statue = gltf.scene;
 
             // Position the statue at the center of the floor
-            statue.position.set(0, -3.2, 0);
+            statue.position.set(0, -3.5, 0);
 
             // Scale if necessary
             statue.scale.set(0.08, 0.08, 0.08);
@@ -32,9 +32,9 @@ export const loadStatueModel = (scene, renderer, camera) => {
                     }
                 }
             });
-
             // Add the statue to the scene
             scene.add(statue);
+            onLoaded(statue);
 
             // Start the animation loop
             const animate = () => {

@@ -159,12 +159,12 @@ export const setupLighting = (scene, paintings) => {
   statueSpotlight.penumbra = 1;
   statueSpotlight.distance = 0;
 
-  // const statueSpotlightFolder = gui.addFolder("Statue Light");
-  // statueSpotlightFolder.add(statueSpotlight, "intensity", 0, 4);
-  // statueSpotlightFolder
-  //   .add(statueSpotlight, "angle", 0, Math.PI / 2)
-  //   .name("Angle");
-  // statueSpotlightFolder.add(statueSpotlight, "penumbra", 0, 1).name("Penumbra");
-  // statueSpotlightFolder.add(statueSpotlight, "decay", 0, 2).name("Decay");
-  // statueSpotlightFolder.close();
+  const statueSpotlightFolder = gui.addFolder("Statue Light");
+  statueSpotlightFolder.add(statueSpotlight, "intensity", 0, 4);
+  statueSpotlightFolder
+    .add(statueSpotlight, "angle", 0, Math.PI / 2)
+    .name("Angle");
+  statueSpotlightFolder.add(statueSpotlight, "penumbra", 0, 1).name("Penumbra");
+  statueSpotlightFolder.add(statueSpotlight, "decay", 0, 2).name("Decay");
+  statueSpotlightFolder.close();
 };

@@ -59,11 +59,11 @@ export const loadCeilingLampModel = (scene, renderer, camera) => {
 
 
         // Add GUI controls for the lamp
-        const lampFolder = gui.addFolder("Ceiling Lamp");
-        lampFolder.add(lamp.position, "x", -50, 50).name("X Position");
-        lampFolder.add(lamp.position, "y", -50, 50).name("Y Position");
-        lampFolder.add(lamp.position, "z", -50, 50).name("Z Position");
-        lampFolder.close();
+        // const lampFolder = gui.addFolder("Ceiling Lamp");
+        // lampFolder.add(lamp.position, "x", -50, 50).name("X Position");
+        // lampFolder.add(lamp.position, "y", -50, 50).name("Y Position");
+        // lampFolder.add(lamp.position, "z", -50, 50).name("Z Position");
+        // lampFolder.close();
     },
   undefined,
   (err) => {

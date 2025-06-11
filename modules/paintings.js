@@ -94,14 +94,15 @@ export function createPaintings(scene, textureLoader) {
 
   return data.map(({ url, pos, rotY, info }) => {
     const texture = textureLoader.load(url);
-    const mat = new THREE.MeshBasicMaterial({ map: texture });
+    // ← also use a Standard (or Lambert/Phong) material
+    const mat = new THREE.MeshStandardMaterial({ map: texture });
     const geo = new THREE.PlaneGeometry(10, 5);
     const mesh = new THREE.Mesh(geo, mat);
     mesh.position.set(...pos);
     mesh.rotation.y = rotY;
     mesh.castShadow = true;
     mesh.receiveShadow = true;
-    mesh.userData.info = info; // Attach info to mesh
+    mesh.userData.info = info;
     scene.add(mesh);
     return mesh;
   });

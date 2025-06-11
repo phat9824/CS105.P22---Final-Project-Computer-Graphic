@@ -22,6 +22,9 @@ export function setupScene() {
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   document.body.appendChild(renderer.domElement);
 
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
+
   controls = new PointerLockControls(camera, document.body);
   scene.add(controls.getObject());
 

@@ -75,25 +75,25 @@ export const setupLighting = (scene, paintings) => {
     return spotlight;
   }
 
-  // const frontWallSpotlight = createSpotlight(0, 6.7, -13, 0.948, new THREE.Vector3(0, 0, -20), 0, 13, -29, 'frontWall');
+  const frontWallSpotlight = createSpotlight(0, 6.7, -13, 0.948, new THREE.Vector3(0, 0, -20), 0, 13, -29, 'frontWall');
 
-  // const backWallSpotlight = createSpotlight(0, 6.7, 13, 0.948, new THREE.Vector3(0, 0, 20), 0, 13, 29, 'backWall');
+  const backWallSpotlight = createSpotlight(0, 6.7, 13, 0.948, new THREE.Vector3(0, 0, 20), 0, 13, 29, 'backWall');
 
-  // const leftWallSpotlight = createSpotlight(-13, 6.7, 0, 0.948, new THREE.Vector3(-20, 0, 0), -29, 13, 0, 'leftWall');
+  const leftWallSpotlight = createSpotlight(-13, 6.7, 0, 0.948, new THREE.Vector3(-20, 0, 0), -29, 13, 0, 'leftWall');
 
-  // const rightWallSpotlight = createSpotlight(13, 6.7, 0, 0.948, new THREE.Vector3(20, 0, 0), 29, 13, 0, 'rightWall');
+  const rightWallSpotlight = createSpotlight(13, 6.7, 0, 0.948, new THREE.Vector3(20, 0, 0), 29, 13, 0, 'rightWall');
 
-  // const statueSpotlight = createSpotlight(
-  //   0,
-  //   10,
-  //   0,
-  //   0.948,
-  //   new THREE.Vector3(0, -4.2, 0)
-  // ); // Spotlight for the statue
-  // statueSpotlight.angle = 0.75084;
-  // statueSpotlight.decay = 1;
-  // statueSpotlight.penumbra = 1;
-  // statueSpotlight.distance = 0;
+  const statueSpotlight = createSpotlight(
+    0,
+    10,
+    0,
+    0.948,
+    new THREE.Vector3(0, -4.2, 0)
+  ); // Spotlight for the statue
+  statueSpotlight.angle = 0.75084;
+  statueSpotlight.decay = 1;
+  statueSpotlight.penumbra = 1;
+  statueSpotlight.distance = 0;
 
   // const statueSpotlightFolder = gui.addFolder("Statue Light");
   // statueSpotlightFolder.add(statueSpotlight, "intensity", 0, 4);

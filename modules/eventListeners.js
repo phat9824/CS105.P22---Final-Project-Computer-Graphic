@@ -81,7 +81,7 @@ function onKeyDown(event, controls) {
     startAudio(); // start the audio guide
   }
 
-  if (event.key === "p") {
+  if (event.key === "p" || event.key == "P") {
     // if the "s" key is pressed
     stopAudio(); // stop the audio guide
   }

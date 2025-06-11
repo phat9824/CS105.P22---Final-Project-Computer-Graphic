@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { displayPaintingInfo, hidePaintingInfo } from "./paintingInfo";
 import { updateMovement } from "./movement";
 
-export function setupRendering(scene, camera, renderer, paintings, controls, wallGroup, statue) {
+export function setupRendering(scene, camera, renderer, paintings, controls, wallGroup) {
   const clock = new THREE.Clock();
 
   function render() {
@@ -10,9 +10,9 @@ export function setupRendering(scene, camera, renderer, paintings, controls, wal
     // if (typeof(window.updateMovement) === "function") {
     //   window.updateMovement(delta);
     // }
-    updateMovement(delta, controls, camera, wallGroup, statue);
+    updateMovement(delta, controls, camera, wallGroup);
 
-    const distanceThreshold = 8; // set a distance threshold (8 units)
+    const distanceThreshold = 13; // set a distance threshold (8 units)
     let paintingToShow;
     paintings.forEach((painting) => {
       const distanceToPainting = camera.position.distanceTo(painting.position); // fixed typo here

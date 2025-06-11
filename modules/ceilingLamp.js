@@ -19,7 +19,6 @@ export const loadCeilingLampModel = (scene, renderer, camera) => {
                     child.material.metalness = 0.2;
                     child.material.roughness = 0.4;
 
-                    child.material.color.set(0xffffff); 
                     child.material.emissive = new THREE.Color(0xffffff); // màu phát sáng
                     child.material.emissiveIntensity = 0.7;
 
@@ -60,9 +59,20 @@ export const loadCeilingLampModel = (scene, renderer, camera) => {
 
         // Add GUI controls for the lamp
         const lampFolder = gui.addFolder("Ceiling Lamp");
-        lampFolder.add(lamp.position, "x", -50, 50).name("X Position");
-        lampFolder.add(lamp.position, "y", -50, 50).name("Y Position");
-        lampFolder.add(lamp.position, "z", -50, 50).name("Z Position");
+        lampFolder
+            .add(spotlight, "intensity", 0, 4)
+            .onChange((value) => {
+            lamp.traverse((child) => {
+                if (child.isMesh && child.material) {
+                if (value === 0) {
+                    child.material.emissiveIntensity = 0; // tắt sáng
+                } else {
+                    child.material.emissive = new THREE.Color(0xffffff);
+                    child.material.emissiveIntensity = value * 0.35; // khớp độ sáng
+                }
+                }
+            });
+            });
         lampFolder.close();
     },
   undefined,

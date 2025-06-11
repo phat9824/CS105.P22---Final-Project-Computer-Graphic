@@ -13,10 +13,10 @@ export const keysPressed = {
 };
 
 // parameters we get from setupRendering where updateMovement is called. setupRendering gets the parameters from main.jsss
-export const updateMovement = (delta, controls, camera, walls, statue) => {
+export const updateMovement = (delta, controls, camera, walls) => {
   const moveSpeed = 5 * delta; // moveSpeed is the distance the camera will move in one second. We multiply by delta to make the movement framerate independent. This means that the movement will be the same regardless of the framerate. This is important because if the framerate is low, the movement will be slow and if the framerate is high, the movement will be fast. This is not what we want. We want the movement to be the same regardless of the framerate.
-  const statueBoundingBox = new THREE.Box3().setFromObject(statue);
-  const distancetoStatue = camera.position.distanceTo(statue.position);
+  // const statueBoundingBox = new THREE.Box3().setFromObject(statue);
+  // const distancetoStatue = camera.position.distanceTo(statue.position);
   const previousPosition = camera.position.clone(); // clone the camera position and store it in previousPosition. We will use this to reset the camera position if there is a collision
 
   // cose self-explanatory
@@ -34,7 +34,7 @@ export const updateMovement = (delta, controls, camera, walls, statue) => {
   }
 
   // After the movement is applied, we check for collisions by calling the checkCollision function. If a collision is detected, we revert the camera's position to its previous position, effectively preventing the player from moving through walls.
-  if (checkCollision(camera, walls, statueBoundingBox, distancetoStatue)) {
+  if (checkCollision(camera, walls)) {
     camera.position.copy(previousPosition); // reset the camera position to the previous position. The `previousPosition` variable is a clone of the camera position before the movement. We use `copy` instead of `set` because `set` will set the position to the same object, so if we change the previousPosition, the camera position will also change. `copy` creates a new object with the same values as the previousPosition.
   }
 };

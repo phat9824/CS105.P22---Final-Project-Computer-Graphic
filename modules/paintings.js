@@ -94,7 +94,7 @@ export function createPaintings(scene, textureLoader) {
 
   return data.map(({ url, pos, rotY, info }) => {
     const texture = textureLoader.load(url);
-    const mat = new THREE.MeshBasicMaterial({ map: texture });
+    const mat = new THREE.MeshStandardMaterial({ map: texture });
     const geo = new THREE.PlaneGeometry(10, 5);
     const mesh = new THREE.Mesh(geo, mat);
     mesh.position.set(...pos);

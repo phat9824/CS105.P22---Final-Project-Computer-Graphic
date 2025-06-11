@@ -19,6 +19,7 @@ import { setupAudio } from "./modules/audio.js";  // ensure audio.js exists
 import { loadStatueModel } from "./modules/statue.js";
 import { loadCeilingLampModel } from "./modules/ceilingLamp.js";
 import { clickHandling } from "./modules/clickHandling.js";
+import { loadFlowerPlotModel } from "./modules/flowerPot.js";
 
 // 1. Scene, camera, controls, renderer
 let { camera, controls, renderer } = setupScene();
@@ -48,6 +49,7 @@ addObjectsToScene(scene, paintings);
 
 // 8. Load extra models (ceiling lamp & statue)
 loadCeilingLampModel(scene);
+loadFlowerPlotModel(scene, renderer, camera);
 loadStatueModel(scene, renderer, camera, (statue) => {
     // 9. UI & controls
     createBoundingBoxes(statue);
